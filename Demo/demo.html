@@ -3,7 +3,7 @@
   <link href="demo.css" rel="stylesheet" type="text/css">
 </head>
 <body>
-<div ng-app="scrollerTestApp" ng-controller="ScrollerController as c" ng-hide="true">
+<div ng-app="scrollerTestApp" ng-controller="ScrollerController as c" class="hidden">
   <ul ui-scroll-viewport class="scrollerViewport">
     <li class="imageCell" ui-scroll="item in imageDataSource" adapter="imageDataSourceAdapter" buffer-size="10">
       <img ng-src="{{item.imageURL}}" title="{{item.description}}"/>
