@@ -1,0 +1,22 @@
+body {
+    font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif;
+}
+.imageCell {
+    float: left;
+    padding: 4px;
+    display: block;
+    width: 100%;
+}
+ul {
+    list-style: none;
+    width: 150px;
+}
+li {
+    width: 100%;
+}
+.scrollerViewport {
+    position: fixed;
+    top: 0;
+    bottom:0;
+    height: 520px;
+}

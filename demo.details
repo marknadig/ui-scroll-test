@@ -1,0 +1,7 @@
+---
+ name: ui-scroll on hidden
+ description: Bug https://github.com/angular-ui/ui-scroll/issues/15
+ authors:
+   - Mark Nadig
+ resources:
+ normalize_css: no

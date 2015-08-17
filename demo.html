@@ -1,0 +1,18 @@
+<html>
+<head>
+  <link href="demo.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div ng-app="scrollerTestApp" ng-controller="ScrollerController as c" ng-hide="true">
+  <ul ui-scroll-viewport class="scrollerViewport">
+    <li class="imageCell" ui-scroll="item in imageDataSource" adapter="imageDataSourceAdapter" buffer-size="10">
+      <img ng-src="{{item.imageURL}}" title="{{item.description}}"/>
+    </li>
+  </ul>
+</div>
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
+<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js"></script>
+<script type="text/javascript" src="src/ui-scroll.js"></script>
+<script type="text/javascript" src="demo.js"></script>
+</body>
+</html>
