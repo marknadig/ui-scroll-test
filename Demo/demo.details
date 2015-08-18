@@ -1,0 +1,10 @@
+---
+ name: Demonstrate infinite loading when not visible
+ description: If the parent div is not visible, scroller keeps loading
+ authors:
+   - Mark Nadig
+ resources:
+   - https://code.jquery.com/jquery-2.1.4.js
+   - https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js
+   - http://rawgit.com/marknadig/ui-scroll-test/tree/master/ui-scroll.js
+ normalize_css: no
