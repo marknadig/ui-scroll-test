@@ -1,10 +1,14 @@
+/*
 ---
- name: Demonstrate infinite loading when not visible
- description: If the parent div is not visible, scroller keeps loading
- authors:
-   - Mark Nadig
- resources:
-   - https://code.jquery.com/jquery-2.1.4.js
-   - https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js
-   - http://rawgit.com/marknadig/ui-scroll-test/master/ui-scroll.js
- normalize_css: no
+name: Demonstrate infinite loading when not visible
+description: If the parent div is not visible, scroller keeps loading
+authors:
+  - Mark Nadig
+resources:
+  - https://code.jquery.com/jquery-2.1.4.js
+  - https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js
+  - https://rawgit.com/marknadig/ui-scroll-test/master/ui-scroll.js
+normalize_css: no
+...
+*/
+<p>This demo will show you how to: add multiple Events to an Element, create custom Events and fire an Event.</p>
