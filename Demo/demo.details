@@ -6,5 +6,5 @@
  resources:
    - https://code.jquery.com/jquery-2.1.4.js
    - https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.js
-   - http://rawgit.com/marknadig/ui-scroll-test/tree/master/ui-scroll.js
+   - http://rawgit.com/marknadig/ui-scroll-test/master/ui-scroll.js
  normalize_css: no
