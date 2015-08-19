@@ -1,25 +1,14 @@
 /*!
- * angular-ui-scroll
- * https://github.com/angular-ui/ui-scroll.git
- * Version: 1.3.1 -- 2015-08-05T13:39:04.079Z
- * License: MIT
- */
- 
+ globals: angular, window
 
- (function () {
-'use strict';
+ List of used element methods available in JQuery but not in JQuery Lite
 
-/*!
-globals: angular, window
-
-	List of used element methods available in JQuery but not in JQuery Lite
-
-		element.before(elem)
-		element.height()
-		element.outerHeight(true)
-		element.height(value) = only for Top/Bottom padding elements
-		element.scrollTop()
-		element.scrollTop(value)
+ element.before(elem)
+ element.height()
+ element.outerHeight(true)
+ element.height(value) = only for Top/Bottom padding elements
+ element.scrollTop()
+ element.scrollTop(value)
  */
 angular.module('ui.scroll', []).directive('uiScrollViewport', function() {
   return {
@@ -99,7 +88,7 @@ angular.module('ui.scroll', []).directive('uiScrollViewport', function() {
             return [];
           };
           insertElement = function(newElement, previousElement) {
-            element.after.apply(previousElement, newElement);
+            element.after.apply(previousElement, [newElement]);
             return [];
           };
           insertElementAnimated = $animate ? angular.version.minor === 2 ? function(newElement, previousElement) {
@@ -328,13 +317,13 @@ angular.module('ui.scroll', []).directive('uiScrollViewport', function() {
               }
             }
           };
-          adjustBuffer = function(rid, finalize) {
+          adjustBuffer = function(rid, adjustAfterFetch) {
             var promises, toBePrepended, toBeRemoved;
             promises = [];
             toBePrepended = [];
             toBeRemoved = [];
             return $timeout(function() {
-              var bottomPos, heightIncrement, i, item, itemHeight, itemTop, j, k, l, len, len1, len2, len3, len4, m, n, newRow, rowTop, topHeight, wrapper;
+              var bottomPos, heightIncrement, i, item, itemHeight, itemTop, j, k, keepFetching, l, len, len1, len2, len3, len4, m, n, newRow, rowTop, topHeight, wrapper;
               bottomPos = builder.bottomDataPos();
               for (i = j = 0, len = buffer.length; j < len; i = ++j) {
                 wrapper = buffer[i];
@@ -349,6 +338,7 @@ angular.module('ui.scroll', []).directive('uiScrollViewport', function() {
                       builder.insertElement(wrapper.element, buffer[i - 1].element);
                     }
                     wrapper.op = 'none';
+                    keepFetching = keepFetching || wrapper.element.outerHeight(true);
                     break;
                   case 'insert':
                     if (i === 0) {
@@ -373,6 +363,7 @@ angular.module('ui.scroll', []).directive('uiScrollViewport', function() {
                   wrapper = toBePrepended[l];
                   builder.insertElement(wrapper.element);
                   wrapper.op = 'none';
+                  keepFetching = keepFetching || wrapper.element.outerHeight(true);
                 }
                 heightIncrement = builder.bottomDataPos() - bottomPos;
                 if (builder.topPadding() >= heightIncrement) {
@@ -386,14 +377,18 @@ angular.module('ui.scroll', []).directive('uiScrollViewport', function() {
                 item.scope.$index = first + i;
               }
               if (shouldLoadBottom()) {
-                enqueueFetch(rid, true);
+                if (!adjustAfterFetch || keepFetching) {
+                  enqueueFetch(rid, true);
+                }
               } else {
                 if (shouldLoadTop()) {
-                  enqueueFetch(rid, false);
+                  if (!adjustAfterFetch || keepFetching || pending[0]) {
+                    enqueueFetch(rid, false);
+                  }
                 }
               }
-              if (finalize) {
-                finalize(rid);
+              if (adjustAfterFetch) {
+                adjustAfterFetch(rid);
               }
               if (pending.length === 0) {
                 topHeight = 0;
@@ -606,6 +601,5 @@ angular.module('ui.scroll', []).directive('uiScrollViewport', function() {
 
 
 /*
-//# sourceURL=src/ui-scroll.js
+ //# sourceURL=src/ui-scroll.js
  */
-}());
